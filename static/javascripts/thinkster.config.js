@@ -1,18 +1,21 @@
 (function () {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('thinkster.config')
-    .config(config);
+    angular
+        .module('thinkster.config')
+        .config(config)
+        .run(run);
 
-  config.$inject = ['$locationProvider'];
+    run.$inject = ['$http'];
+    config.$inject = ['$locationProvider'];
 
-  /**
-  * @name config
-  * @desc Enable HTML5 routing
-  */
-  function config($locationProvider) {
-    $locationProvider.html5Mode(true);
-    $locationProvider.hashPrefix('!');
-  }
+    function config($locationProvider) {
+        $locationProvider.html5Mode(true);
+        $locationProvider.hashPrefix('!');
+    }
+
+    function run($http) {
+        $http.defaults.xsrfHeaderName = 'X-CSRFToken';
+        $http.defaults.xsrfCookieName = 'csrftoken';
+    }
 })();
