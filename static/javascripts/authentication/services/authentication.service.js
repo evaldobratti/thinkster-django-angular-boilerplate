@@ -14,7 +14,8 @@
             login: login,
             register: register,
             setAuthenticatedAccount: setAuthenticatedAccount,
-            unauthenticate: unauthenticate
+            unauthenticate: unauthenticate,
+            logout: logout
         };
 
         return Authentication;
@@ -69,6 +70,21 @@
 
         function unauthenticate() {
             delete $cookies.authenticatedAccount;
+        }
+
+        function logout() {
+            return $http.post('/api/v1/auth/logout/')
+                .then(logoutSuccessFn, logoutErrorFn);
+
+            function logoutSuccessFn(data, status, headers, config) {
+                Authentication.unauthenticate();
+
+                window.location = '/';
+            }
+
+            function logoutErrorFn(data, status, headers, config) {
+                console.error('Epic failure!');
+            }
         }
     }
 })();
