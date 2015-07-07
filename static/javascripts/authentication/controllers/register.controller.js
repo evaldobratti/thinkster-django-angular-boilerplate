@@ -1,25 +1,23 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('thinkster.authentication.controllers')
-        .controller('RegisterController', RegisterController);
+  angular
+    .module('thinkster.authentication.controllers')
+    .controller('RegisterController', RegisterController);
 
-    RegisterController.$inject = ['$location', '$scope', 'Authentication'];
+  RegisterController.$inject = ['$location', '$scope', 'Authentication'];
 
-    /**
-     * @namespace RegisterController
-     */
-    function RegisterController($location, $scope, Authentication) {
-        var vm = this;
+  /**
+  * @namespace RegisterController
+  */
+  function RegisterController($location, $scope, Authentication) {
+    var vm = this;
 
-        vm.register = register;
-
+    vm.register = register;
 
         activate();
 
         function activate() {
-            // If the user is authenticated, they should not be here.
             if (Authentication.isAuthenticated()) {
                 $location.url('/');
             }

@@ -1,30 +1,21 @@
-/**
- * Created by evaldo on 03/07/15.
- */
 (function () {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('thinkster.layout.controllers')
-    .controller('NavbarController', NavbarController);
+    angular
+        .module('thinkster.layout.controllers')
+        .controller('NavbarController', NavbarController);
 
-  NavbarController.$inject = ['$scope', 'Authentication'];
+    NavbarController.$inject = ['$scope', 'Authentication'];
 
-  /**
-  * @namespace NavbarController
-  */
-  function NavbarController($scope, Authentication) {
-    var vm = this;
+    function NavbarController($scope, Authentication) {
+        var vm = this;
 
-    vm.logout = logout;
+        vm.logout = logout;
 
-    /**
-    * @name logout
-    * @desc Log the user out
-    * @memberOf thinkster.layout.controllers.NavbarController
-    */
-    function logout() {
-      Authentication.logout();
+        return vm;
+
+        function logout() {
+            Authentication.logout();
+        }
     }
-  }
 })();
