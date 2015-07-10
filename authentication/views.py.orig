@@ -1,11 +1,21 @@
+<<<<<<< HEAD
+import json
+
+=======
+>>>>>>> blah
 from rest_framework import permissions, viewsets, status, views
 from rest_framework.response import Response
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import authenticate, login, logout
+
+from django.contrib.auth import authenticate, login, logout
+
 from authentication.models import Account
 from authentication.permissions import IsAccountOwner
 from authentication.serializers import AccountSerializer
 
 import json
+
+
 class AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
     queryset = Account.objects.all()
@@ -34,6 +44,10 @@ class AccountViewSet(viewsets.ModelViewSet):
         }, status=status.HTTP_400_BAD_REQUEST)
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> blah
 class LoginView(views.APIView):
     def post(self, request, format=None):
         data = json.loads(request.body)
@@ -68,4 +82,8 @@ class LogoutView(views.APIView):
     def post(self, request, format=None):
         logout(request)
 
+<<<<<<< HEAD
         return Response({}, status=status.HTTP_204_NO_CONTENT)
+=======
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
+>>>>>>> blah
